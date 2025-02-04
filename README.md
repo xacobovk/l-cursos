@@ -27,7 +27,7 @@ landing-page-cursos
 
 1. Clona el repositorio:
    ```
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/xacobovk/l-cursos.git
    ```
 
 2. Navega al directorio del proyecto:
