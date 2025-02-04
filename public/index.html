@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Cursos</title>
+  <link rel="stylesheet" href="styles/dark-mode.css" id="themeStylesheet">
+  <link rel="stylesheet" href="styles/light-mode.css" id="themeStylesheetLight" disabled>
+</head>
+<body>
+  <header>
+    <h1>Plataforma de Cursos</h1>
+  </header>
+  <nav>
+    <a href="login.html">Iniciar Sesión</a>
+    <a href="register.html">Registrarse</a>
+    <a href="#courses">Cursos</a>
+    <a href="#cart">Carrito</a>
+    <a href="#contact">Contacto Empresas</a>
+  </nav>
+  <div class="container">
+    <!-- Cursos -->
+    <section id="courses" class="course-section">
+      <h2>Cursos Disponibles</h2>
+      <div class="course-card">
+        <h3>Curso de Excel</h3>
+        <p>Aprende Excel desde cero.</p>
+        <button onclick="addToCart(1)">Añadir al Carrito</button>
+      </div>
+      <!-- Agrega más cursos aquí -->
+    </section>
+
+    <!-- Carrito -->
+    <section id="cart" class="cart">
+      <h2>Tu Carrito</h2>
+      <div id="cartItems"></div>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2023 Plataforma de Cursos. Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    async function addToCart(courseId) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Por favor, inicia sesión o regístrate para añadir cursos al carrito.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const response = await fetch('http://localhost:5000/api/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token, courseId }),
+      });
+
+      if (response.ok) {
+        alert('Curso añadido al carrito');
+        updateCart();
+      } else {
+        alert('Error al añadir curso al carrito');
+      }
+    }
+
+    async function updateCart() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        document.getElementById('cartItems').innerHTML = '<p>Por favor, inicia sesión para ver tu carrito.</p>';
+        return;
+      }
+
+      const response = await fetch('http://localhost:5000/api/cart', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'token': token,
+        },
+      });
+
+      const cartItems = await response.json();
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `<p>${item.title} - ${item.price}€</p>`;
+        cartItemsContainer.appendChild(itemElement);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCart);
+  </script>
+</body>
+</html>

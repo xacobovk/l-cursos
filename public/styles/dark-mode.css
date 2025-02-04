@@ -1,0 +1,57 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #1f1f1f;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav {
+  background: #333;
+}
+
+nav a {
+  color: #ffffff;
+}
+
+.container {
+  padding: 20px;
+}
+
+.form-container {
+  background: #1f1f1f;
+  border: 1px solid #444;
+}
+
+.form-container h2 {
+  color: #0073e6;
+}
+
+.form-container input, .form-container button {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+.course-card {
+  background: #1f1f1f;
+  border: 1px solid #444;
+}
+
+.course-card h3 {
+  color: #0073e6;
+}
+
+.cart {
+  background: #1f1f1f;
+  border: 1px solid #444;
+}
+
+footer {
+  background: #333;
+  color: #ffffff;
+}

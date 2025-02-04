@@ -1,0 +1,37 @@
+{
+  "name": "landing-page-cursos",
+  "version": "1.0.0",
+  "description": "Landing page para la venta de cursos de informática con diseño moderno en modo oscuro y claro.",
+  "main": "src/scripts/main.js",
+  "scripts": {
+    "start": "live-server public",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "keywords": [
+    "cursos",
+    "informática",
+    "landing page",
+    "modo oscuro",
+    "modo claro"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "dependencies": {
+    "anymatch": "^3.1.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "chokidar": "^3.5.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "live-server": "^1.2.0",
+    "micromatch": "^4.0.7",
+    "mysql2": "^3.12.0",
+    "readdirp": "^3.6.0"
+  },
+  "homepage": "https://tu-sitio-web.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/landing-page-cursos.git"
+  }
+}
